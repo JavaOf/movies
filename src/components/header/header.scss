@@ -116,6 +116,7 @@
 
 @media (max-width: 576px) {
   .header {
+    padding: 5px 0;
     &__parent {
       display: flex;
       flex-direction: row;
