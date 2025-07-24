@@ -44,8 +44,12 @@ export const Banner = () => {
           modules={[Autoplay, Pagination, Navigation]}
           breakpoints={{
             0: {
-              slidesPerView: 1.8,
+              slidesPerView: 1,
               spaceBetween: 10,
+            },
+            360: {
+              spaceBetween: 10,
+              slidesPerView: 1.8,
             },
             576: {
               slidesPerView: 3
