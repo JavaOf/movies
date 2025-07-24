@@ -5,11 +5,11 @@ import { PopularCard } from '../../entities/popularCard/PopularCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { addToSave } from '../../app/store/slices/saveSlices/saveSlice';
+import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './banner.scss';
-import { Link } from 'react-router-dom';
 
 export const Banner = () => {
   const { popularState, popularError, popularLoading } = useSelector(s => s.bannerSlice);
@@ -37,31 +37,46 @@ export const Banner = () => {
         <Swiper
           className="banner__content"
           slidesPerView={3.5}
-          spaceBetween={40}
+          spaceBetween={20}
           centeredSlides={true}
           grabCursor={true}
-          initialSlide={1}
+          initialSlide={2}
           modules={[Autoplay, Pagination, Navigation]}
-          pagination={{
-            clickable: true,
+          breakpoints={{
+            0: {
+              slidesPerView: 1.8,
+              spaceBetween: 10,
+            },
+            576: {
+              slidesPerView: 3
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            992: {
+              slidesPerView: 3.5,
+              spaceBetween: 30,
+            },
           }}
+          pagination={{ clickable: true }}
           navigation
           onSlideChange={(e) => setActiveIndex(e.realIndex)}
           autoplay={{
             delay: 3000,
-            pauseOnMouseEnter: true
+            pauseOnMouseEnter: true,
           }}
         >
           {popularState?.results?.map((item) => {
             return (
               <SwiperSlide key={item?.id}>
                 <Link to={`/card/${item?.id}`}>
-                <PopularCard
-                  activeCard={activeCard}
-                  setActiveCard={setActiveCard}
-                  handleAddToSave={() => dispatch(addToSave(item))}
-                  {...item}
-                />
+                  <PopularCard
+                    activeCard={activeCard}
+                    setActiveCard={setActiveCard}
+                    handleAddToSave={() => dispatch(addToSave(item))}
+                    {...item}
+                  />
                 </Link>
               </SwiperSlide>
             )
