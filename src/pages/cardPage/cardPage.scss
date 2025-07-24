@@ -1,0 +1,40 @@
+@import '../../app/scss/app.scss';
+
+.card-page {
+  position: relative;
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 ;
+    &-wrapper{
+      display: flex;
+      gap: 15px;
+      &-btn{
+        @include btn-for-icons(auto, auto);
+      }
+    }
+  }
+  &__background {
+      position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+  &::before {
+    content: "";
+    background-color: transparent;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba(160, 0, 0, 0.3) 5%,
+      rgba(107, 0, 0, 0.9) 50%
+    );
+    z-index: 1;
+  }
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+}

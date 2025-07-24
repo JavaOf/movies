@@ -1,0 +1,158 @@
+@import "../../app/scss/app.scss";
+
+.header {
+  background-color: $main;
+  padding: 20px 30px;
+
+  &-menu {
+    @include btn-for-icons(auto, auto);
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-size: 25px;
+  }
+
+  &__parent {
+    border: solid 1px #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(4px);
+    padding: 15px 40px;
+    border-radius: 30px;
+    background-color: #333333cd;
+    z-index: 2;
+    position: sticky;
+    margin: 20px 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 12px 55px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+
+    &-link {
+      color: #fff;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: $gold;
+      text-underline-offset: 7px;
+    }
+
+    &-logo {
+      color: #fff;
+      font-size: 35px;
+      font-weight: 800;
+      text-decoration: none
+    }
+
+    &-search,
+    &-account,
+    &-message,
+    &-notification,
+    &-telegram {
+      @include btn-for-icons(auto, auto);
+    }
+    .max {
+      display: none;
+    }
+
+    &--menu {
+      display: flex;
+    }
+
+    &--desktop {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__parent {
+      display: flex;
+      flex-direction: row;
+    }
+    &__wrapper {
+      &--desktop {
+        display: none;
+      }
+      .max {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &--menu {
+        display: none;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+
+        &.show {
+          display: flex;
+        }
+      }
+    }
+
+    &-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__parent {
+      flex-direction: row;
+      align-items: center;
+      padding: 15px 20px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    &__parent {
+      display: flex;
+      flex-direction: row;
+      padding: 20px !important;
+    }
+    &__wrapper {
+      &--desktop {
+        display: none;
+      }
+      .max {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &--menu {
+        display: none;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+
+        &.show {
+          display: flex;
+        }
+      }
+    }
+
+    &-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__parent {
+      flex-direction: row;
+      align-items: center;
+      padding: 15px 20px;
+    }
+  }
+}

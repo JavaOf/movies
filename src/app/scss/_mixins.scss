@@ -1,0 +1,20 @@
+@mixin btn-for-icons($w, $h) {
+  width: $w;
+  height: $h;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 300ms ease;
+  border: solid 1px $gold;
+  border-radius: 10px;
+  padding: 10px 20px;
+  backdrop-filter: blur(2px);
+  transition: all 300ms ease;
+  &:hover {
+    background-color: $gold;
+    color: $black;
+  }
+}

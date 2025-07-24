@@ -1,0 +1,61 @@
+@import "../../app/scss/app.scss";
+
+.default-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none !important;
+  &__top {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    &-poster {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    &__statics {
+      position: relative;
+      padding: 10px;
+      height: 100%;
+      &-vote {
+        color: $white;
+        background-color: $black;
+        padding: 2px 5px;
+        border-radius: 5px;
+        font-weight: 600;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 10px;
+        text-decoration: none !important;
+
+        &.top {
+          border: solid 1px $green;
+        }
+        &.low {
+          border: solid 1px $gold;
+        }
+      }
+      &-language {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 2px 5px;
+        background-color: $gold;
+        font-weight: 600;
+        border-radius: 5px;
+        margin: 10px;
+        text-decoration: none;
+        color: $black;
+      }
+    }
+  }
+  &-title {
+    color: $white;
+    font-weight: 500;
+  }
+}

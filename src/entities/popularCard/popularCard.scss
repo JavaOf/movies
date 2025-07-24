@@ -1,0 +1,127 @@
+@import "../../app/scss/app.scss";
+
+.popular-card {
+  width: 100%;
+  position: relative;
+  height: 450px;
+  transition: all 500ms linear;
+  &.show {
+    &::before {
+      content: "";
+      background-color: #00000080;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      border-radius: 30px;
+    }
+  }
+  &-statics {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    &-vote {
+      color: $white;
+      font-size: 18px;
+      background-color: $black;
+      display: inline-block;
+      padding: 2px 4px;
+      border-radius: 7px;
+      font-weight: 600;
+      &.top {
+        border: solid 1px $green;
+      }
+      &.low {
+        border: solid 1px $gold;
+      }
+    }
+    &-language {
+      color: $black;
+      font-size: 18px;
+      background-color: $gold;
+      display: inline-block;
+      padding: 2px 4px;
+      border-radius: 7px;
+      font-weight: 600;
+    }
+  }
+  &::before {
+    content: "";
+    background-color: #00000000;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    z-index: 2;
+    border-radius: 0 0px 30px 30px;
+  }
+  &-poster {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    img {
+      border-radius: 30px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__texts {
+    padding: 20px;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    &-title {
+      color: $white;
+      font-size: 30px;
+    }
+  }
+  &__hover {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 500ms linear;
+    display: none;
+    &.show {
+      display: flex;
+    }
+    &-overview {
+      color: $white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    &-options {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      &-copy,
+      &-notification,
+      &-save {
+        @include btn-for-icons(auto, auto);
+      }
+      &-look {
+        border-radius: 10px;
+        border: none;
+        color: $black;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        padding: 10px 10px;
+        background-color: $gold;
+        cursor: pointer;
+      }
+    }
+  }
+}

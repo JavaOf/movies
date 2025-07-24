@@ -1,0 +1,49 @@
+@import "../../app/scss/app.scss";
+
+.banner {
+  position: relative;
+  height: 600px;
+  &::before {
+  content: "";
+background-color: transparent;
+position: absolute;
+inset: 0;
+background: linear-gradient(rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.9) 100%);
+z-index: 1;
+
+  }
+  &-background {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    filter: blur(2px);
+  }
+  &__content {
+    padding: 40px 0;
+  }
+}
+
+.swiper-slide {
+}
+
+.swiper-pagination-bullet {
+  background-color: $white;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $gold;
+  width: 25px;
+  border-radius: 3px;
+}
+
+.swiper-button-prev {
+  color: $white;
+}
+
+.swiper-button-next {
+  // font-size: 30px;
+  color: $white;
+
+}
