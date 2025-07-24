@@ -58,6 +58,7 @@ export const Banner = () => {
               slidesPerView: 3.5,
               spaceBetween: 30,
             },
+            
           }}
           pagination={{ clickable: true }}
           navigation

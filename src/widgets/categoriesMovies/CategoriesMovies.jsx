@@ -21,6 +21,26 @@ export const CategoriesMovies = ({ years, selectedYear, handleYearGet, categorie
                 <Swiper
                     spaceBetween={30}
                     slidesPerView={7.5}
+                    breakpoints={{
+                        768: {
+                            slidesPerView: 5
+                        },
+                        0: {
+                            slidesPerView: 2.5
+                        },
+                        460: {
+                            slidesPerView: 3.5
+                        },
+                        576: {
+                            slidesPerView: 4
+                        },
+                        992: {
+                            slidesPerView: 6
+                        },
+                        1200: {
+                            slidesPerView: 8
+                        }
+                    }}
                     className="categories-films__header">
                     {years?.map((item, i) => {
                         return <SwiperSlide
@@ -36,6 +56,26 @@ export const CategoriesMovies = ({ years, selectedYear, handleYearGet, categorie
                 <Swiper
                     spaceBetween={15}
                     slidesPerView={9}
+                    breakpoints={{
+                        768: {
+                            slidesPerView: 5
+                        },
+                        0: {
+                            slidesPerView: 2.5
+                        },
+                        460: {
+                            slidesPerView: 3.5
+                        },
+                        576: {
+                            slidesPerView: 4
+                        },
+                        992: {
+                            slidesPerView: 6
+                        },
+                        1200: {
+                            slidesPerView: 8
+                        }
+                    }}
                 >
                     {categoriesState?.undefined
                         ?.map((item) => {
