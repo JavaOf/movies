@@ -1,0 +1,54 @@
+@import "../../app/scss/app.scss";
+
+.footer {
+    &__content {
+
+    border: solid 1px #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(4px);
+    padding: 15px 40px;
+    border-radius: 30px;
+    background-color: #333333cd;
+    z-index: 2;
+    position: sticky;
+    // margin: 20px 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 12px 55px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    &__wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        &-title{
+            color: #fff;
+      font-size: 35px;
+      font-weight: 800;
+      text-decoration: none;
+        }
+        &-link{
+            color: $white;
+            font-size: 18px;
+            font-weight: 600;
+            a{
+                color: $gold;
+                text-decoration: underline;
+                text-decoration-color: $white;
+                text-underline-offset: 10px;
+            }
+        }
+    }
+  }
+}
+
+
+
+@media (max-width: 576px){
+    .footer{
+        &__content{
+            gap: 25px;
+        }
+    }
+}

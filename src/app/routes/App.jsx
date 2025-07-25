@@ -6,6 +6,7 @@ import {Register} from '../../assets/register/Register';
 import { Routes, Route } from "react-router-dom";
 import { Login } from "../../assets/login/Login";
 import { ProfilePage } from "../../pages/profilePage/ProfilePage";
+import { Footer } from "../../components/footer/Footer";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
           return <Route key={i} {...obj}/>
         })}
       </Routes>
+      <Footer/>
     </>
   )
 }
