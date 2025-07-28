@@ -2,7 +2,7 @@ import { Header } from "../../components/header/Header";
 import { CardPage } from "../../pages/cardPage/CardPage";
 import { DetailPage } from "../../pages/detailPage/DetailPage";
 import { HomePage } from "../../pages/homePage/HomePage";
-import {Register} from '../../assets/register/Register';
+import { Register } from '../../assets/register/Register';
 import { Routes, Route } from "react-router-dom";
 import { Login } from "../../assets/login/Login";
 import { ProfilePage } from "../../pages/profilePage/ProfilePage";
@@ -25,15 +25,15 @@ function App() {
     },
     {
       path: '/auth/register',
-      element: <Register/>
+      element: <Register />
     },
     {
       path: '/auth/login',
-      element: <Login/>
+      element: <Login />
     },
     {
       path: '/auth/profile',
-      element: <ProfilePage/>
+      element: <ProfilePage />
     },
   ];
 
@@ -42,10 +42,10 @@ function App() {
       <Header />
       <Routes>
         {arrRoutes.map((obj, i) => {
-          return <Route key={i} {...obj}/>
+          return <Route key={i} {...obj} />
         })}
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   )
 }

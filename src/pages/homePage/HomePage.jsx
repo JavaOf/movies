@@ -1,47 +1,51 @@
 import { useState, useEffect } from 'react';
-import { getCategoriesFilms } from '../../app/store/slices/categoriesFilmsSlice/categoriesFilmsThunk';
-import { getCategoriesSeries } from '../../app/store/slices/categoriesSeriesSlice/categoriesSeriesThunk';
+import {
+  getCategoriesFilms,
+  getCategoriesSeries,
+  getPopularMovies,
+  getTopRatedSeries,
+  getNowPlayingMovies,
+  getTopActors,
+} from '../../app/store/slices/categoriesSlice/categoriesThunk';
+
 import { CategoriesMovies } from '../../widgets/categoriesMovies/CategoriesMovies';
 import { Banner } from '../../widgets/banner/Banner';
 import { useDispatch, useSelector } from 'react-redux';
 import './homePage.scss';
 
 export const HomePage = () => {
-  const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+  const years = [
+    2010, 2011, 2012, 2013, 2014, 2015, 2016,
+    2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
+  ];
 
   const {
-    categoriesFilmsState,
-    categoriesFilmsLoading,
-    categoriesFilmsError
-  } = useSelector(s => s.categoriesFilmsSlice);
-
-  const {
-    categoriesSeriesState,
-    categoriesSeriesLoading,
-    categoriesSeriesError
-  } = useSelector(s => s.categoriesSeriesSlice);
+    filmsByYear,
+    seriesByYear,
+    popularMovies,
+    topRatedSeries,
+    nowPlayingMovies,
+    topActors,
+    animatedMovies,
+    horrorMovies,
+    comedyMovies,
+    loading,
+    error,
+  } = useSelector((state) => state.categories);
 
   const dispatch = useDispatch();
 
   const [selectedFilmsYear, setSelectedFilmsYear] = useState(years[0]);
   const [selectedSeriesYear, setSelectedSeriesYear] = useState(years[0]);
 
-  const initialYear = years[0];
-
   useEffect(() => {
-    dispatch(getCategoriesFilms(initialYear));
-    dispatch(getCategoriesSeries(initialYear));
-  }, [dispatch, initialYear]); 
-
-  const handleYearFilmsGet = (year) => {
-    setSelectedFilmsYear(year);
-    dispatch(getCategoriesFilms(year));
-  };
-
-  const handleYearSeriesGet = (year) => {
-    setSelectedSeriesYear(year);
-    dispatch(getCategoriesSeries(year));
-  };
+    dispatch(getCategoriesFilms(selectedFilmsYear));
+    dispatch(getCategoriesSeries(selectedSeriesYear));
+    dispatch(getPopularMovies());
+    dispatch(getTopRatedSeries());
+    dispatch(getNowPlayingMovies());
+    dispatch(getTopActors());
+  }, [dispatch, selectedFilmsYear, selectedSeriesYear]);
 
   return (
     <div>
@@ -49,19 +53,62 @@ export const HomePage = () => {
 
       <CategoriesMovies
         selectedYear={selectedFilmsYear}
-        categoriesState={categoriesFilmsState}
-        handleYearGet={handleYearFilmsGet}
+        categoriesState={filmsByYear}
+        handleYearGet={(year) => {
+          setSelectedFilmsYear(year);
+          dispatch(getCategoriesFilms(year));
+        }}
         years={years}
-        type='Films'
+        type="Фильмы по годам"
+        loading={loading}
+        error={error}
       />
 
       <CategoriesMovies
         selectedYear={selectedSeriesYear}
-        categoriesState={categoriesSeriesState}
-        handleYearGet={handleYearSeriesGet}
+        categoriesState={seriesByYear}
+        handleYearGet={(year) => {
+          setSelectedSeriesYear(year);
+          dispatch(getCategoriesSeries(year));
+        }}
         years={years}
-        type='Series'
+        type="Сериалы по годам"
+        loading={loading}
+        error={error}
       />
+
+      <CategoriesMovies
+        selectedYear={null}
+        categoriesState={{ all: popularMovies }}
+        handleYearGet={() => {}}
+        years={[]}
+        type="Популярные фильмы"
+      />
+
+      <CategoriesMovies
+        selectedYear={null}
+        categoriesState={{ all: topRatedSeries }}
+        handleYearGet={() => {}}
+        years={[]}
+        type="Топовые сериалы"
+      />
+
+      <CategoriesMovies
+        selectedYear={null}
+        categoriesState={{ all: nowPlayingMovies }}
+        handleYearGet={() => {}}
+        years={[]}
+        type="Сейчас в кино"
+      />
+
+      <CategoriesMovies
+        selectedYear={null}
+        categoriesState={{ all: topActors }}
+        handleYearGet={() => {}}
+        years={[]}
+        type="Лучшие актёры"
+      />
+
     </div>
   );
 };

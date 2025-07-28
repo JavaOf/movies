@@ -1,5 +1,5 @@
 import './defaultCard.scss';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const DefaultCard = ({
     title,
@@ -11,18 +11,37 @@ export const DefaultCard = ({
     original_language,
     original_title,
     original_name,
-    setActiveHover
+    setActiveHover,
+    profile_path
 }) => {
 
     const classRating = vote_average >= 7 ? 'top' : 'low';
     return (
         <Link to={`/card/${id}`} className='default-card'>
             <div className='default-card__top'>
-                <img className='default-card__top-poster' src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
-                <div className="default-card__top__statics">
-                    <span className={`default-card__top__statics-vote ${classRating}`}>{vote_average.toFixed(1)}</span>
-                    <span className='default-card__top__statics-language'>{original_language.toUpperCase()}</span>
-                </div>
+                <img
+                    className='default-card__top-poster'
+                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                    alt={title}
+                />
+                {profile_path && (
+                    <img
+                        className='default-card__top-poster'
+                        src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                        alt={title}
+                    />
+                )}
+                {poster_path && (
+                    <div className="default-card__top__statics">
+                        <span className={`default-card__top__statics-vote ${classRating}`}>
+                            {vote_average && vote_average?.toFixed(1)}
+                        </span>
+                        <span className='default-card__top__statics-language'>
+                            {vote_average && original_language?.toUpperCase()}
+                        </span>
+                    </div>
+                )}
+
             </div>
             <span className='default-card-title'>
                 {title?.length > 15 ? title?.substr(0, 17)?.trim() + '...' : title}
