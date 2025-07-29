@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   getCategoriesFilms,
   getCategoriesSeries,
@@ -10,10 +13,11 @@ import {
 
 import { CategoriesMovies } from '../../widgets/categoriesMovies/CategoriesMovies';
 import { Banner } from '../../widgets/banner/Banner';
-import { useDispatch, useSelector } from 'react-redux';
 import './homePage.scss';
 
 export const HomePage = () => {
+  const { t } = useTranslation();
+
   const years = [
     2010, 2011, 2012, 2013, 2014, 2015, 2016,
     2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
@@ -26,9 +30,6 @@ export const HomePage = () => {
     topRatedSeries,
     nowPlayingMovies,
     topActors,
-    animatedMovies,
-    horrorMovies,
-    comedyMovies,
     loading,
     error,
   } = useSelector((state) => state.categories);
@@ -59,7 +60,7 @@ export const HomePage = () => {
           dispatch(getCategoriesFilms(year));
         }}
         years={years}
-        type="Фильмы по годам"
+        type={t('movies_by_year')}
         loading={loading}
         error={error}
       />
@@ -72,7 +73,7 @@ export const HomePage = () => {
           dispatch(getCategoriesSeries(year));
         }}
         years={years}
-        type="Сериалы по годам"
+        type={t('tv_series_by_year')}
         loading={loading}
         error={error}
       />
@@ -82,7 +83,7 @@ export const HomePage = () => {
         categoriesState={{ all: popularMovies }}
         handleYearGet={() => {}}
         years={[]}
-        type="Популярные фильмы"
+        type={t('popular_films')}
       />
 
       <CategoriesMovies
@@ -90,7 +91,7 @@ export const HomePage = () => {
         categoriesState={{ all: topRatedSeries }}
         handleYearGet={() => {}}
         years={[]}
-        type="Топовые сериалы"
+        type={t('top_tv_series')}
       />
 
       <CategoriesMovies
@@ -98,7 +99,7 @@ export const HomePage = () => {
         categoriesState={{ all: nowPlayingMovies }}
         handleYearGet={() => {}}
         years={[]}
-        type="Сейчас в кино"
+        type={t('now_at_the_cinema')}
       />
 
       <CategoriesMovies
@@ -106,9 +107,8 @@ export const HomePage = () => {
         categoriesState={{ all: topActors }}
         handleYearGet={() => {}}
         years={[]}
-        type="Лучшие актёры"
+        type={t('best_actors')}
       />
-
     </div>
   );
 };
