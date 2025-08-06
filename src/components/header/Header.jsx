@@ -22,12 +22,14 @@ export const Header = () => {
     setActiveLanguage(false);
   };
 
+
   return (
     <header className='header'>
       <div className="container header__parent">
         <div className="header__wrapper">
           <Link to='/' className="header__wrapper-logo">{t('movies')}</Link>
         </div>
+
 
         <div className="header__wrapper header__wrapper--desktop">
           <Link to="/" className="header__wrapper-link">
@@ -63,7 +65,6 @@ export const Header = () => {
             <IoLanguage />
           </span>
 
-          <span className="header__wrapper-notification"><IoNotifications /></span>
           <span className="header__wrapper-search max"><IoMdSearch /></span>
 
           <Link

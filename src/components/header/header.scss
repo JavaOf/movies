@@ -6,7 +6,7 @@
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 100;
   &-menu {
     @include btn-for-icons(auto, auto);
     display: none;
@@ -93,6 +93,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        
       }
       &--menu {
         display: none;
@@ -164,9 +165,6 @@
     }
   }
 }
-
-
-
 
 .language__content {
   position: absolute;

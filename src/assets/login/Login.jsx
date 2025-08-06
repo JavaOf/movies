@@ -5,8 +5,8 @@ import { SiGmail } from "react-icons/si";
 import { FaYandex } from "react-icons/fa";
 import './login.scss';
 
-export const Login = () => {
-  return (
+  export const Login = () => {
+    return (
      <div className="login">
       <div className='container'>
         <div className="login__content">

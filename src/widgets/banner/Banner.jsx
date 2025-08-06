@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { addToSave } from '../../app/store/slices/saveSlices/saveSlice';
 import { Link } from 'react-router-dom';
+import { SkeletonCard } from '../../shared/assets/skeletonCard/skeletonCard';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -16,6 +17,7 @@ export const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const saveList = useSelector(s => s.saveSlice);
   const [activeCard, setActiveCard] = useState(null);
+
   const dispatch = useDispatch();
   console.log(saveList)
   // console.log(popularState)
@@ -52,7 +54,7 @@ export const Banner = () => {
               slidesPerView: 1.8,
             },
             576: {
-              slidesPerView: 3
+              slidesPerView: 2.2
             },
             768: {
               slidesPerView: 3,
@@ -75,6 +77,9 @@ export const Banner = () => {
           {popularState?.results?.map((item) => {
             return (
               <SwiperSlide key={item?.id}>
+                {popularLoading ? (
+                  <SkeletonCard type={"banner"}/>
+                ) : (
                 <Link to={`/card/${item?.id}`}>
                   <PopularCard
                     activeCard={activeCard}
@@ -83,6 +88,7 @@ export const Banner = () => {
                     {...item}
                   />
                 </Link>
+                )}
               </SwiperSlide>
             )
           })}

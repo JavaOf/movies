@@ -48,10 +48,11 @@ export const HomePage = () => {
     dispatch(getTopActors());
   }, [dispatch, selectedFilmsYear, selectedSeriesYear]);
 
+
   return (
     <div>
       <Banner />
-
+      
       <CategoriesMovies
         selectedYear={selectedFilmsYear}
         categoriesState={filmsByYear}
