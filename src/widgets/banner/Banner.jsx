@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { addToSave } from '../../app/store/slices/saveSlices/saveSlice';
 import { Link } from 'react-router-dom';
-import { SkeletonCard } from '../../shared/assets/skeletonCard/skeletonCard';
+import { SkeletonCard } from '../../shared/assets/skeletonCard/SkeletonCard';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
