@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-export const SkeletonCard = ({ limit = 6, type}) => {
+export const SkeletonCart = ({ limit = 6, type}) => {
 
   return (
     <div className='row'>
