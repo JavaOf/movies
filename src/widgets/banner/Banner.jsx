@@ -17,13 +17,19 @@ export const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const saveList = useSelector(s => s.saveSlice);
   const [activeCard, setActiveCard] = useState(null);
+  const [isPaginationEnabled, setIsPaginationEnabled] = useState(window.innerWidth > 576);
 
   const dispatch = useDispatch();
-  console.log(saveList)
-  // console.log(popularState)
 
   useEffect(() => {
     dispatch(getPopularMovies());
+
+    const handleResize = () => {
+      setIsPaginationEnabled(window.innerWidth > 576);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [dispatch]);
 
   const movie = popularState?.results || [];
@@ -39,7 +45,7 @@ export const Banner = () => {
         <Swiper
           className="banner__content"
           slidesPerView={3.5}
-          spaceBetween={20}
+          spaceBetween={30}
           centeredSlides={true}
           grabCursor={true}
           initialSlide={2}
@@ -50,11 +56,12 @@ export const Banner = () => {
               spaceBetween: 10,
             },
             360: {
-              spaceBetween: 10,
               slidesPerView: 1.8,
+              spaceBetween: 10,
             },
             576: {
               slidesPerView: 2.2,
+              spaceBetween: 15,
             },
             768: {
               slidesPerView: 3,
@@ -64,9 +71,8 @@ export const Banner = () => {
               slidesPerView: 3.5,
               spaceBetween: 30,
             },
-
           }}
-          pagination={{ clickable: true }}
+          pagination={isPaginationEnabled ? { clickable: true } : false}
           navigation
           onSlideChange={(e) => setActiveIndex(e.realIndex)}
           autoplay={{
