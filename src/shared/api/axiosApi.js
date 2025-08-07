@@ -11,7 +11,7 @@ const axiosApi = axios.create({
 });
 
 axiosApi.interceptors.request.use((config) => {
-  const lang = i18.language || 'en';
+  const lang = i18.language || 'ru';
   config.params = {
     ...(config.params || {}),
     language: lang,

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../app/store/auth/authThunk'; 
 import { useEffect } from 'react';
 import './register.scss';
+import { useTranslation } from 'react-i18next';
 
 export const Register = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -25,7 +26,10 @@ export const Register = () => {
 
   const handleRegisterSubmit = (data) => {
     dispatch(registerUser(data));
+    reset();
   };
+
+  const {t} = useTranslation()
 
   return (
     <div className="register">
@@ -36,13 +40,13 @@ export const Register = () => {
             onSubmit={handleSubmit(handleRegisterSubmit)}
             className='register__content__form'
           >
-            <h2 className='register__content__form-title'>Зарегистрироваться</h2>
+            <h2 className='register__content__form-title'>{t('register')}</h2>
             <div className="register__content__form-box">
               <input
                 {...register('username')}
                 className={`register__content__form-box-input ${errors?.username ? 'err' : ''}`}
                 type="text"
-                placeholder='Введите ваш ник'
+                placeholder={t('enter_your_nickname')}
               />
               {errors?.username && <p className="error">{errors?.username?.message}</p>}
             </div>
@@ -51,7 +55,7 @@ export const Register = () => {
                 {...register('email')}
                 className={`register__content__form-box-input ${errors?.email ? 'err' : ''}`}
                 type="email"
-                placeholder='Введите ваш email'
+                placeholder={t('enter_your_email')}
               />
               {errors?.email && <p className="error">{errors?.email?.message}</p>}
             </div>
@@ -60,7 +64,7 @@ export const Register = () => {
                 {...register('password')}
                 className={`register__content__form-box-input ${errors?.password ? 'err' : ''}`}
                 type="password"
-                placeholder='Введите пароль'
+                placeholder={t('create_a_password')}
               />
               {errors?.password && <p className="error">{errors?.password?.message}</p>}
             </div>
@@ -69,7 +73,7 @@ export const Register = () => {
                 {...register('password_confirm')}
                 className={`register__content__form-box-input ${errors?.password_confirm ? 'err' : ''}`}
                 type="password"
-                placeholder='Повторите пароль'
+                placeholder={'confirm_your_password'}
               />
               {errors?.password_confirm && <p className="error">{errors?.password_confirm?.message}</p>}
             </div>
@@ -88,13 +92,13 @@ export const Register = () => {
                   </svg></span>
                 </label>
               </div>
-              <span className="register__content__form__wrapper-check"> Я принимаю условия</span>
+              <span className="register__content__form__wrapper-check"> {t('i_accept_the_terms')}</span>
             </div>
             {errors?.acceptTerms && <p className="error">{errors?.acceptTerms?.message}</p>}
             <button className="register__content__form-btn" type='submit' disabled={loading}>
-              {loading ? 'Регистрация...' : 'Зарегистрироваться'}
+              {`${loading ? t('registration_loading') : t('register')}`}
             </button>
-            <span className="register__content__form-link">У меня есть аккаунт? <Link to={'/auth/login'}>Войти</Link></span>
+            <span className="register__content__form-link">{t('you_already_have_an_account')}? <Link to={'/auth/login'}>{t('login')}</Link></span>
           </form>
         </div>
       </div>
