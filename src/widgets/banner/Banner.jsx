@@ -54,7 +54,7 @@ export const Banner = () => {
               slidesPerView: 1.8,
             },
             576: {
-              slidesPerView: 2.2
+              slidesPerView: 2.2,
             },
             768: {
               slidesPerView: 3,
