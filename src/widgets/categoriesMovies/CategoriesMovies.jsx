@@ -3,7 +3,7 @@ import { MdNavigateNext } from 'react-icons/md';
 import { DefaultCard } from '../../entities/defaultCard/DefaultCard';
 import './categoriesMovies.scss';
 import 'swiper/css';
-import { SkeletonCard } from '../../shared/assets/skeletonCart/SkeletonCart';
+import { SkeletonCart } from '../../shared/assets/skeletonCart/SkeletonCart';
 
 export const CategoriesMovies = ({
   years,
@@ -74,7 +74,7 @@ export const CategoriesMovies = ({
             movies.map((item) => (
               <SwiperSlide key={item.id}>
                 {loading ? (
-                  <SkeletonCard />
+                  <SkeletonCart />
                 ) : (
                   <DefaultCard {...item} />
                 )}

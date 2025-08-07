@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { addToSave } from '../../app/store/slices/saveSlices/saveSlice';
 import { Link } from 'react-router-dom';
-import { SkeletonCard } from '../../shared/assets/skeletonCart/SkeletonCart';
+import { SkeletonCart } from '../../shared/assets/skeletonCart/SkeletonCart';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -78,7 +78,7 @@ export const Banner = () => {
             return (
               <SwiperSlide key={item?.id}>
                 {popularLoading ? (
-                  <SkeletonCard type={"banner"} />
+                  <SkeletonCart type={"banner"} />
                 ) : (
                   <Link to={`/card/${item?.id}`}>
                     <PopularCard
