@@ -7,11 +7,13 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import './header.scss';
+import { Search } from "../../entities/search/Search";
 
 export const Header = () => {
   const [active, setActive] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(false);
   const isRegistered = useSelector((state) => state.authSlice?.user);
+  const [activeSearch, setActiveSearch] = useState(false);
   const { i18n, t } = useTranslation();
 
   const handleChangeLanguage = (lang) => {
@@ -21,6 +23,10 @@ export const Header = () => {
     window.location.reload();
     setActiveLanguage(false);
   };
+
+  const handleChangeSearch = () => {
+    setActiveSearch(prev => !prev);
+  }
 
 
   return (
@@ -38,11 +44,13 @@ export const Header = () => {
           <span className="header__wrapper-search max">
             <IoLanguage />
           </span>
-          <span className="header__wrapper-search">
+          <span onClick={() => handleChangeSearch()} className="header__wrapper-search">
             <IoMdSearch />
           </span>
         </div>
-
+          {activeSearch && (
+            <Search onClick={() => handleChangeSearch()}/>
+          )}
         <span onClick={() => setActive(!active)} className="header-menu">
           <IoMenu />
         </span>
@@ -57,8 +65,16 @@ export const Header = () => {
             {activeLanguage && (
               <nav className="language__content">
                 <ul>
-                  <li onClick={() => handleChangeLanguage('en')}>English</li>
-                  <li onClick={() => handleChangeLanguage('ru')}>Русский</li>
+                  <li >
+                    <button onClick={() => handleChangeLanguage('en')} disabled={i18n.language === 'en'}>
+                      English
+                    </button>
+                  </li>
+                   <li >
+                    <button onClick={() => handleChangeLanguage('ru')} disabled={i18n.language === 'ru'}>
+                      Русский
+                    </button>
+                  </li>
                 </ul>
               </nav>
             )}

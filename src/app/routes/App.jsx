@@ -3,10 +3,12 @@ import { CardPage } from "../../pages/cardPage/CardPage";
 import { DetailPage } from "../../pages/detailPage/DetailPage";
 import { HomePage } from "../../pages/homePage/HomePage";
 import { Register } from '../../assets/register/Register';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Login } from "../../assets/login/Login";
 import { ProfilePage } from "../../pages/profilePage/ProfilePage";
 import { Footer } from "../../components/footer/Footer";
+import { useEffect } from "react";
+
 
 function App() {
 
@@ -37,14 +39,27 @@ function App() {
     },
   ];
 
+  const ScrollTop = ({ children }) => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, [pathname]);
+    return children;
+  };
+
   return (
     <>
       <Header />
-      <Routes>
-        {arrRoutes.map((obj, i) => {
-          return <Route key={i} {...obj} />
-        })}
-      </Routes>
+      <ScrollTop>
+        <Routes>
+          {arrRoutes.map((obj, i) => {
+            return <Route key={i} {...obj} />
+          })}
+        </Routes>
+      </ScrollTop>
       <Footer />
     </>
   )

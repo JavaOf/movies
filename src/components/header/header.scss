@@ -47,7 +47,6 @@
       text-underline-offset: 7px;
     }
 
-
     &-logo {
       color: #fff;
       font-size: 35px;
@@ -62,9 +61,9 @@
     &-telegram {
       @include btn-for-icons(auto, auto);
     }
-&-message{
-  position: relative;
-}
+    &-message {
+      position: relative;
+    }
     .max {
       display: none;
     }
@@ -93,7 +92,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
       }
       &--menu {
         display: none;
@@ -171,28 +169,37 @@
   top: 60px;
   right: 20px;
   background-color: #1e1e1e;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   z-index: 100;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   li {
+    list-style: none;
     &:last-child{
+
       margin-top: 10px;
     }
-    list-style: none;
-    padding: 10px 15px;
-    font-weight: 600;
-    color: $white;
-    background-color: transparent;
-    border: 1px solid $white;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.2s;
+    button {
+      width: 100%;
+      padding: 10px 15px;
+      font-weight: 600;
+      font-size: 18px;
+      color: $white;
+      background-color: transparent;
+      border: 1px solid $white;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: "Montserrat", sans-serif;
 
-    &:hover {
-      background-color: $gold;
-      color: #000;
+      &:disabled {
+        opacity: 0.5;
+      }
+      &:hover {
+        background-color: $gold;
+        color: #000;
+      }
     }
   }
 }

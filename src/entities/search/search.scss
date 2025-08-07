@@ -1,0 +1,48 @@
+@import '../../app/scss/app.scss';
+
+.search{
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.331);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    &-btn{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        @include btn-for-icons(auto, auto);
+        font-family: 'Montserrat', sans-serif;
+        background-color: $main;
+    }
+    &__content{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        &-title{
+            color: $white;
+            font-size: 46px;
+        }
+        &__wrapper{
+            width: 100%;
+            input{
+                width: 100%;
+                padding: 15px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 24px;
+                outline: none;
+                border-radius: 5px;
+                background-color: $main;
+                color: $white;
+                border: solid 1px $gold;
+            }
+        }
+    }
+}
