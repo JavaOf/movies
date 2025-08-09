@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchMovies } from '../../app/store/slices/searchSlice/searchThunk';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { IoMdMenu, IoMdClose } from 'react-icons/io';
 import './search.scss';
 
 export const Search = ({ onClick }) => {
@@ -11,6 +12,7 @@ export const Search = ({ onClick }) => {
     const [searchValue, setSearchValue] = useState('');
     const { t } = useTranslation();
     const [selectionSearch, setSelectionSearch] = useState('all');
+    const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
 
     const changeSearch = (e) => {
@@ -67,16 +69,27 @@ export const Search = ({ onClick }) => {
                     <button onClick={clearSearch}>{t('clear')}</button>
                 </div>
 
-                <div className="search__content__wrapper">
-                    {filterButtons.map(({ key, label }) => (
-                        <button
-                            key={key}
-                            className={selectionSearch === key ? 'active' : ''}
-                            onClick={() => setSelectionSearch(key)}
-                        >
-                            {label}
-                        </button>
-                    ))}
+                {/* Бургер / Категории */}
+                <div className="search__filter">
+                    <div className="search__filter-burger" onClick={() => setMenuOpen(!menuOpen)}>
+                        {menuOpen ? <IoMdClose /> : <IoMdMenu />}
+                        <span>{t('categories')}</span>
+                    </div>
+
+                    <div className={`search__filter-buttons ${menuOpen ? 'open' : ''}`}>
+                        {filterButtons.map(({ key, label }) => (
+                            <button
+                                key={key}
+                                className={selectionSearch === key ? 'active' : ''}
+                                onClick={() => {
+                                    setSelectionSearch(key);
+                                    setMenuOpen(false);
+                                }}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
                 <div className="search__results">
