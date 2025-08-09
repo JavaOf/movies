@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { MdNavigateNext } from 'react-icons/md';
 import { DefaultCard } from '../../entities/defaultCard/DefaultCard';
+import { SkeletonCart } from '../../shared/assets/skeletonCart/SkeletonCart';
 import './categoriesMovies.scss';
 import 'swiper/css';
-import { SkeletonCart } from '../../shared/assets/skeletonCart/SkeletonCart';
 
 export const CategoriesMovies = ({
   years,

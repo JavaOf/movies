@@ -3,6 +3,7 @@ import bannerReducer from './slices/bannerSlices/bannerSlice.js';
 import categoriesReducer from './slices/categoriesSlice/categoriesSlice.js';
 import saveReducer from './slices/saveSlices/saveSlice.js';
 import authReducer from './auth/authSlice.js';
+import searchReducer from './slices/searchSlice/searchSlice.js';
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
         categories: categoriesReducer, 
         saveSlice: saveReducer,
         authSlice: authReducer,
+        searchSlice: searchReducer,
     },
 });
 

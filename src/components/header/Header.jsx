@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import './header.scss';
 import { Search } from "../../entities/search/Search";
+import './header.scss';
 
 export const Header = () => {
   const [active, setActive] = useState(false);
@@ -56,7 +56,7 @@ export const Header = () => {
         </span>
 
         <div className={`header__wrapper header__wrapper--menu ${active ? 'show' : ''}`}>
-          <span className="header__wrapper-telegram"><FaTelegram /></span>
+          <a href="https://t.me/Lord090818" target="_blank" className="header__wrapper-telegram"><FaTelegram /></a>
 
           <span
             className={`header__wrapper-message ${activeLanguage ? 'active' : ''}`}

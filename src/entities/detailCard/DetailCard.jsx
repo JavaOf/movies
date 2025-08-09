@@ -1,5 +1,6 @@
 import { FaStar, FaLanguage } from "react-icons/fa";
 import './detailCard.scss';
+import { t } from "i18next";
 
 export const DetailCard = ({
   item
@@ -30,7 +31,7 @@ export const DetailCard = ({
               {item?.vote_average?.toFixed(2)} <FaStar />
             </span>
             <span className={`detail-card__row-wrapper-vote ${classVote}`}>
-              голосы {item?.vote_count} 
+              {t('vote')} - {item?.vote_count} 
             </span>
           </div>
 
@@ -42,14 +43,14 @@ export const DetailCard = ({
           </h2>
         </div>
         <div className="detail-card__row-wrapper row">
-          <b className="detail-card__row-wrapper-tagline">Информация</b>
+          <b className="detail-card__row-wrapper-tagline">{t('information')}</b>
           <span className="detail-card__row-wrapper-dots"></span>
           <b className="detail-card__row-wrapper-date">{item.release_date && (
             now.getFullYear(item?.release_date)
-          )} / ({item?.origin_country}) / {hours} часа {minutes} мин</b>
+          )} / ({item?.origin_country}) / {hours} {t('hour')} {minutes} {t('min')}</b>
         </div>
         <div className="detail-card__row-wrapper row">
-          <b className="detail-card__row-wrapper-tagline">Жанры</b>
+          <b className="detail-card__row-wrapper-tagline">{t('genres')}</b>
           <span className="detail-card__row-wrapper-dots"></span>
           <b className="detail-card__row-wrapper-date">{item?.genres?.map((item, i, arr) => {
             return <span key={item?.id}>
@@ -59,7 +60,7 @@ export const DetailCard = ({
           })}</b>
         </div>
         <div className="detail-card__row-wrapper">
-          <span className="detail-card__row-wrapper-label">Обзор</span>
+          <span className="detail-card__row-wrapper-label">{t('review')}</span>
           <p className="detail-card__row-wrapper-overview">
             {item?.overview?.length > 300 ? item?.overview?.slice(0, 300).trim() + '...' : item?.overview}
           </p>

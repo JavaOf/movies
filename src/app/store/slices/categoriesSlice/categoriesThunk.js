@@ -40,3 +40,5 @@ export const getTopActors = createAsyncThunk('categories/getTopActors', async ()
   const response = await axiosApi('person/popular');
   return { type: 'topActors', results: response.data.results };
 });
+
+

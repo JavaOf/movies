@@ -1,48 +1,175 @@
-@import '../../app/scss/app.scss';
+@import "../../app/scss/app.scss";
 
-.search{
+.search {
+  position: absolute;
+  width: 100%;
+  height: 100dvh;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.331);
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 12px 55px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  &-btn {
     position: absolute;
-    width: 100%;
-    height: 100dvh;
-    backdrop-filter: blur(10px);
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.331);
-    left: 0;
-    top: 0;
+    top: 25px;
+    right: 25px;
+    @include btn-for-icons(auto, auto);
+    font-family: "Montserrat", sans-serif;
+    background-color: $main;
+  }
+  &__content {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    &-title {
+      color: $white;
+      font-size: 46px;
+    }
+    &__wrapper {
+    display: flex;
+      width: 100%;
+      gap: 20px;
+      button{
+        width: 20%;
+        padding: 15px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+        outline: none;
+        border-radius: 5px;
+        background-color: $main;
+        color: $white;
+        border: solid 1px $gold;
+        cursor: pointer;
+        &.active{
+            background-color: $gold;
+            color: $main;
+        }
+      }
+      input {
+        width: 80%;
+        padding: 15px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+        outline: none;
+        border-radius: 5px;
+        background-color: $main;
+        color: $white;
+        border: solid 1px $gold;
+      }
+    }
+  }
+  &__results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+  &__item {
+    background-color: #333333cd;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 12px 55px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: 20px;
     border-radius: 10px;
     display: flex;
-    justify-content: center;
-    padding: 25px;
-    &-btn{
-        position: absolute;
-        top: 25px;
-        left: 25px;
-        @include btn-for-icons(auto, auto);
-        font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    gap: 25px;
+    &__texts{
         background-color: $main;
-    }
-    &__content{
-        width: 60%;
+        width: 70%;
+        border-radius: 5px;
+        padding: 15px;
         display: flex;
         flex-direction: column;
         gap: 15px;
         &-title{
             color: $white;
-            font-size: 46px;
+            font-size: 20px;
         }
-        &__wrapper{
-            width: 100%;
-            input{
-                width: 100%;
-                padding: 15px;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 24px;
-                outline: none;
-                border-radius: 5px;
-                background-color: $main;
-                color: $white;
-                border: solid 1px $gold;
-            }
+        &-vote{
+            color: $white;
+            display: block;
+            font-weight: 600;
+        }
+        &-release{
+            display: block;
+            color: $white;
+            margin-top: 10px;
+            font-weight: 600;
         }
     }
+    &-poster{
+        width: 30%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+
+    }
+  }
+  &__see-more-btn{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: $main;
+    color: $gold;
+    font-size: 20px;
+    border: solid 1px $gold;
+    cursor: pointer;
+  }
+  &__no-results{
+    color: $gold;
+    width: 100%;
+    background-color: $main;
+    border: solid 1px $gold;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+  }
+}
+
+
+
+@media  screen and (max-width: 1400px) {
+  .search{
+    &__content{
+      width: 100%;
+    }
+  }
+}
+
+
+@media  screen and (max-width: 768px) {
+  .search{
+    &__content{
+      &__wrapper{
+        button{
+          width: 30%;
+        }
+      }
+    }
+  }
+}
+
+@media  screen and (max-width: 576px) {
+  .search{
+    &__content{
+      &__wrapper{
+        flex-wrap: wrap;
+        button{
+          width: 100%;
+        }
+        input{
+          width: 100%;
+        }
+      }
+    }
+  }
 }

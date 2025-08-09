@@ -20,7 +20,7 @@ i18
     },
     detection: {
       order: ['localStorage', 'navigator'],
-      caches: ['localStorage'], // 💡 сохраняем язык
+      caches: ['localStorage'], 
     },
     interpolation: {
       escapeValue: false,
