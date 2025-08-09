@@ -81,7 +81,7 @@ export const Header = () => {
             <IoLanguage />
           </span>
 
-          <span className="header__wrapper-search max"><IoMdSearch /></span>
+          <span className="header__wrapper-search max" onClick={() => handleChangeSearch()}><IoMdSearch /></span>
 
           <Link
             to={isRegistered ? '/auth/profile' : '/auth/register'}
