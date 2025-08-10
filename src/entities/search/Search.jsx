@@ -69,7 +69,6 @@ export const Search = ({ onClick }) => {
                     <button onClick={clearSearch}>{t('clear')}</button>
                 </div>
 
-                {/* Бургер / Категории */}
                 <div className="search__filter">
                     <div className="search__filter-burger" onClick={() => setMenuOpen(!menuOpen)}>
                         {menuOpen ? <IoMdClose /> : <IoMdMenu />}
