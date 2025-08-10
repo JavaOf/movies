@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../app/store/auth/authThunk'; 
 import { useEffect } from 'react';
-import './register.scss';
 import { useTranslation } from 'react-i18next';
+import './register.scss';
 
 export const Register = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
