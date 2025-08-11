@@ -68,10 +68,10 @@ export const Login = () => {
               {loading ? t('login_loading') : t('login')}
             </button>
 
-            <button className="login__content__form-btn new" type="button"><FcGoogle/> Google</button>
+            {/* <button className="login__content__form-btn new" type="button"><FcGoogle/> Google</button>
             <button className="login__content__form-btn new" type="button"><SiVk/> VK</button>
             <button className="login__content__form-btn new" type="button"><SiGmail/> Gmail</button>
-            <button className="login__content__form-btn new" type="button"><FaYandex/> Yandex</button>
+            <button className="login__content__form-btn new" type="button"><FaYandex/> Yandex</button> */}
 
             <span className="login__content__form-link">{t('no_account')}? <Link to={'/auth/register'}>{t('register')}</Link></span>
             <span className="login__content__form-link">{t('contact_support')}</span>

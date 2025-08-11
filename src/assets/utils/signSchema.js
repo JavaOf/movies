@@ -1,37 +1,39 @@
 import * as yup from 'yup';
+import i18n from 'i18next';
+
+const t = i18n.t.bind(i18n);
 
 const signInSchema = yup.object().shape({
     username: yup
         .string()
-        .required('Это поле обязательное')
+        .required(t('error_required'))
         .trim()
         .strict()
-        .min(3, 'Необходимо минимум 3 символа')
-        .max(30, 'Имя пользователя не должно превышать 30 символов')
-        .matches(/^[a-zA-Z0-9_]+$/, 'Имя пользователя может содержать только буквы, цифры и нижнее подчёркивание'),
+        .min(3, t('error_min_chars', { count: 3 }))
+        .max(30, t('error_max_chars', { count: 30 }))
+        .matches(/^[a-zA-Z0-9_]+$/, t('error_username_format')),
     email: yup
         .string()
         .trim()
         .strict()
-        .required('Обязательное поле')
-        .email('Не корректный email')
-        .max(50, 'Email не должен превышать 50 символов')
-        .lowercase()
-    ,
+        .required(t('error_required'))
+        .email(t('error_invalid_email'))
+        .max(50, t('error_max_chars', { count: 50 }))
+        .lowercase(),
     password: yup
         .string()
         .trim()
         .strict()
-        .required('Это поле обязательно')
-        .min(6, 'Необходимо минимум 6 символов')
-        .matches(/^(?=.*[A-Z])(?=.*\d).+$/, 'Пароль должен содержать хотя бы одну заглавную букву и одну цифру')
-        .max(100, 'Пароль не должен превышать 100 символов'),
+        .required(t('error_required'))
+        .min(6, t('error_min_chars', { count: 6 }))
+        .matches(/^(?=.*[A-Z])(?=.*\d).+$/, t('error_password_format'))
+        .max(100, t('error_max_chars', { count: 100 })),
     password_confirm: yup
         .string()
         .trim()
         .strict()
-        .oneOf([yup.ref('password'), null], 'Пароли не совпадают')
-        .required('Обязательное поле'),
+        .oneOf([yup.ref('password'), null], t('error_passwords_do_not_match'))
+        .required(t('error_required')),
 });
 
 export default signInSchema;

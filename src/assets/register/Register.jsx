@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import registerSchema from '../utils/signSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../../app/store/auth/authThunk'; 
+import { registerUser } from '../../app/store/auth/authThunk';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import registerSchema from '../utils/signSchema';
 import './register.scss';
 
 export const Register = () => {
@@ -17,6 +17,7 @@ export const Register = () => {
   const loading = useSelector(s => s.authSlice.loading);
   const error = useSelector(s => s.authSlice.error);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isRegistered) {
@@ -29,8 +30,6 @@ export const Register = () => {
     reset();
   };
 
-  const {t} = useTranslation()
-
   return (
     <div className="register">
       <div className='container'>
@@ -41,6 +40,7 @@ export const Register = () => {
             className='register__content__form'
           >
             <h2 className='register__content__form-title'>{t('register')}</h2>
+
             <div className="register__content__form-box">
               <input
                 {...register('username')}
@@ -50,6 +50,7 @@ export const Register = () => {
               />
               {errors?.username && <p className="error">{errors?.username?.message}</p>}
             </div>
+
             <div className="register__content__form-box">
               <input
                 {...register('email')}
@@ -59,6 +60,7 @@ export const Register = () => {
               />
               {errors?.email && <p className="error">{errors?.email?.message}</p>}
             </div>
+
             <div className="register__content__form-box">
               <input
                 {...register('password')}
@@ -68,12 +70,13 @@ export const Register = () => {
               />
               {errors?.password && <p className="error">{errors?.password?.message}</p>}
             </div>
+
             <div className="register__content__form-box">
               <input
                 {...register('password_confirm')}
                 className={`register__content__form-box-input ${errors?.password_confirm ? 'err' : ''}`}
                 type="password"
-                placeholder={'confirm_your_password'}
+                placeholder={t('confirm_your_password')}
               />
               {errors?.password_confirm && <p className="error">{errors?.password_confirm?.message}</p>}
             </div>
@@ -86,19 +89,28 @@ export const Register = () => {
                   type="checkbox"
                   {...register('acceptTerms')}
                 />
-                <label className="checkbox" htmlFor="checkbox-filled-ripple"><span>
-                  <svg viewBox="0 0 12 10">
-                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                  </svg></span>
+                <label className="checkbox" htmlFor="checkbox-filled-ripple">
+                  <span>
+                    <svg viewBox="0 0 12 10">
+                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg>
+                  </span>
                 </label>
               </div>
-              <span className="register__content__form__wrapper-check"> {t('i_accept_the_terms')}</span>
+              <span className="register__content__form__wrapper-check">
+                {t('i_accept_the_terms')}
+              </span>
             </div>
+
             {errors?.acceptTerms && <p className="error">{errors?.acceptTerms?.message}</p>}
+
             <button className="register__content__form-btn" type='submit' disabled={loading}>
-              {`${loading ? t('registration_loading') : t('register')}`}
+              {loading ? t('registration_loading') : t('register')}
             </button>
-            <span className="register__content__form-link">{t('you_already_have_an_account')}? <Link to={'/auth/login'}>{t('login')}</Link></span>
+
+            <span className="register__content__form-link">
+              {t('you_already_have_an_account')} <Link to={'/auth/login'}>{t('login')}</Link>
+            </span>
           </form>
         </div>
       </div>

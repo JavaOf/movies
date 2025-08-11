@@ -40,5 +40,12 @@
   "vote": "Vote",
   "min": "min",
   "hour": "hour",
-  "date": "Date"
+  "date": "Date",
+  "error_required": "This field is required",
+  "error_min_chars": "At least {{count}} characters required",
+  "error_max_chars": "Must not exceed {{count}} characters",
+  "error_username_format": "Username can only contain letters, numbers, and underscores",
+  "error_invalid_email": "Invalid email address",
+  "error_password_format": "Password must contain at least one uppercase letter and one number",
+  "error_passwords_do_not_match": "Passwords do not match"
 }
