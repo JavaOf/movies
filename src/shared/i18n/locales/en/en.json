@@ -40,5 +40,24 @@
   "vote": "Vote",
   "min": "min",
   "hour": "hour",
-  "date": "Date"
+  "date": "Date",
+
+  "login_title": "Login",
+  "enter_your_username": "Enter your username",
+  "enter_your_password": "Enter your password",
+  "login_loading": "Logging in...",
+  "dont_have_an_account": "Don't have an account?",
+  "remember_me": "Remember me",
+  "forgot_password": "Forgot password?",
+  
+  "validation_required": "This field is required",
+  "validation_min_3": "Minimum 3 characters required",
+  "validation_max_30": "Username must not exceed 30 characters",
+  "validation_username_format": "Username may only contain letters, numbers, and underscores",
+  "validation_email_invalid": "Invalid email address",
+  "validation_email_max": "Email must not exceed 50 characters",
+  "validation_password_min": "Minimum 6 characters required",
+  "validation_password_format": "Password must contain at least one uppercase letter and one number",
+  "validation_password_max": "Password must not exceed 100 characters",
+  "validation_password_mismatch": "Passwords do not match"
 }

@@ -40,5 +40,24 @@
   "vote": "Оценка",
   "min": "мин",
   "hour": "час",
-  "date": "Дата"
+  "date": "Дата",
+
+  "login_title": "Вход",
+  "enter_your_username": "Введите имя пользователя",
+  "enter_your_password": "Введите пароль",
+  "login_loading": "Вход...",
+  "dont_have_an_account": "У вас нет аккаунта?",
+  "remember_me": "Запомнить меня",
+  "forgot_password": "Забыли пароль?",
+
+  "validation_required": "Это поле обязательное",
+  "validation_min_3": "Необходимо минимум 3 символа",
+  "validation_max_30": "Имя пользователя не должно превышать 30 символов",
+  "validation_username_format": "Имя пользователя может содержать только буквы, цифры и нижнее подчёркивание",
+  "validation_email_invalid": "Некорректный email",
+  "validation_email_max": "Email не должен превышать 50 символов",
+  "validation_password_min": "Необходимо минимум 6 символов",
+  "validation_password_format": "Пароль должен содержать хотя бы одну заглавную букву и одну цифру",
+  "validation_password_max": "Пароль не должен превышать 100 символов",
+  "validation_password_mismatch": "Пароли не совпадают"
 }

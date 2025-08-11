@@ -1,10 +1,11 @@
+// src/features/auth/Login.jsx
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import loginSchema from '../utils/loginShema';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../app/store/auth/authThunk';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FcGoogle } from "react-icons/fc";
 import { SiVk, SiGmail } from "react-icons/si";
@@ -17,8 +18,8 @@ export const Login = () => {
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { isAuthenticated, loading, error } = useSelector(s => s.authSlice);
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -37,7 +38,10 @@ export const Login = () => {
       <div className='container'>
         <div className="login__content">
           {error && <p className="error global-error">{error}</p>}
-          <form className='login__content__form' onSubmit={handleSubmit(handleLoginSubmit)}>
+          <form
+            onSubmit={handleSubmit(handleLoginSubmit)}
+            className='login__content__form'
+          >
             <h2 className='login__content__form-title'>{t('login')}</h2>
 
             <div className="login__content__form-box">
@@ -47,7 +51,7 @@ export const Login = () => {
                 type="email"
                 placeholder={t('enter_your_email')}
               />
-              {errors?.email && <p className="error">{errors.email.message}</p>}
+              {errors?.email && <p className="error">{errors?.email?.message}</p>}
             </div>
 
             <div className="login__content__form-box">
@@ -57,7 +61,7 @@ export const Login = () => {
                 type="password"
                 placeholder={t('enter_your_password')}
               />
-              {errors?.password && <p className="error">{errors.password.message}</p>}
+              {errors?.password && <p className="error">{errors?.password?.message}</p>}
             </div>
 
             <div className="login__content__form__wrapper">

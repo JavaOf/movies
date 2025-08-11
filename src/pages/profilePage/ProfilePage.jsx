@@ -1,12 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../app/store/auth/authSlice'; 
 import './profilePage.scss';
 
 export const ProfilePage = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector(s => s.authSlice);
 
-  console.log(user);
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/auth/login'); 
+  };
+
   return (
     <div className='profile'>
       <div className="container">
@@ -42,6 +50,14 @@ export const ProfilePage = () => {
               className="profile__content__wrapper-input"
             />
           </div>
+
+          <button 
+            type="button" 
+            className="profile__content-logout-btn"
+            onClick={handleLogout}
+          >
+            {t('logout') || 'Выйти'}
+          </button>
         </div>
       </div>
     </div>
