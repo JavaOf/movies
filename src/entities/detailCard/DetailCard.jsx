@@ -53,7 +53,7 @@ export const DetailCard = ({ item }) => {
               {item?.vote_average?.toFixed(2)} <FaStar />
             </span>
             <span className={`detail-card__row-wrapper-vote ${classVote}`}>
-              {t('vote')} - {item?.vote_count} 
+              {t('vote')} - {item?.vote_count}
             </span>
           </div>
         </div>
@@ -159,7 +159,15 @@ export const DetailCard = ({ item }) => {
               className="detail-card__row-wrapper-new-button"
               onClick={handleTrailerClick}
               to={`/trailer/${item.id}`}
-              style={{textDecoration: 'none'}}
+              style={{ textDecoration: 'none' }}
+            >
+              Просмотр
+            </Link>
+             <Link
+              className="detail-card__row-wrapper-new-button"
+              onClick={handleTrailerClick}
+              to={`/trailer/${item.id}`}
+              style={{ textDecoration: 'none' }}
             >
               Просмотр
             </Link>

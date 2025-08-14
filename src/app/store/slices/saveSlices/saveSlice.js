@@ -1,44 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const saveList = JSON.parse(localStorage.getItem('cartLst')) || [];
-
 const initialState = {
-    saveList: saveList,
-}
-
+    saveList: JSON.parse(localStorage.getItem('saveList')) || [],
+};
 
 const saveSlice = createSlice({
     name: 'saveSlice',
     initialState,
     reducers: {
         addToSave: (state, { payload }) => {
-            const movie = payload;
-            const idx = state.saveList.findIndex((item) => {
-                return item.id === movie.id;
-            });
-            if (idx === -1) {
-                const updateSaveList = [...state.saveList, movie];
-                localStorage.setItem('saveList', JSON.stringify(updateSaveList))
-                return {
-                    ...state,
-                    saveList: updateSaveList,
-                }
+            const exists = state.saveList.some(item => item.id === payload.id);
+            if (!exists) {
+                state.saveList.push(payload);
+                localStorage.setItem('saveList', JSON.stringify(state.saveList));
             }
-            return state;
         },
         removeToSave: (state, { payload }) => {
-            const movie = payload;
-            state.saveList.filter((item) => {
-                const updateSave = [...state.saveList, item.id !== movie.id]
-                localStorage.setItem('cartList', JSON.stringify(updateSave))
-                return {
-                    saveList: updateSave,
-                };
-            })
+            state.saveList = state.saveList.filter(item => item.id !== payload.id);
+            localStorage.setItem('saveList', JSON.stringify(state.saveList));
         },
     },
 });
 
-export const { addToSave } = saveSlice.actions;
+export const { addToSave, removeToSave } = saveSlice.actions;
 
 export default saveSlice.reducer;

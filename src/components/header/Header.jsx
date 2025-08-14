@@ -68,9 +68,9 @@ export const Header = () => {
         <div className={`header__wrapper header__wrapper--menu ${active ? 'show' : ''}`}>
           <a href="https://t.me/Lord090818" target="_blank" className="header__wrapper-telegram"><FaTelegram /></a>
 
-          <span className="header__wrapper-search">
+          <Link to={`/save`} className="header__wrapper-search">
             <FaSave />
-          </span>
+          </Link>
 
           <span
             className={`header__wrapper-message ${activeLanguage ? 'active' : ''}`}
