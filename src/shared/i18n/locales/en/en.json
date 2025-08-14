@@ -61,5 +61,9 @@
    "no_saved_movies": "No saved movies",
   "favorites": "Favorites",
   "delete": "Delete",
-  "go_to": "Go to"
+  "go_to": "Go to",
+  "forgot_password": "Forgot password?",
+  "no_account": "No account",
+  "contact_support": "Contact support",
+    "enter_your_password": "Enter your password"
 }

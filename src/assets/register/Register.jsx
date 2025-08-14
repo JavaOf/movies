@@ -82,24 +82,8 @@ export const Register = () => {
             </div>
 
             <div className="register__content__form__wrapper">
-              <div className="checkbox-wrapper">
-                <input
-                  className="input"
-                  id="checkbox-filled-ripple"
-                  type="checkbox"
-                  {...register('acceptTerms')}
-                />
-                <label className="checkbox" htmlFor="checkbox-filled-ripple">
-                  <span>
-                    <svg viewBox="0 0 12 10">
-                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                    </svg>
-                  </span>
-                </label>
-              </div>
-              <span className="register__content__form__wrapper-check">
-                {t('i_accept_the_terms')}
-              </span>
+   
+         
             </div>
 
             {errors?.acceptTerms && <p className="error">{errors?.acceptTerms?.message}</p>}
