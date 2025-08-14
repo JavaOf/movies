@@ -1,5 +1,5 @@
 import { IoMdSearch } from "react-icons/io";
-import { FaTelegram } from "react-icons/fa";
+import { FaTelegram, FaSave } from "react-icons/fa";
 import { IoNotifications, IoMenu, IoLanguage } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ export const Header = () => {
   const [activeLanguage, setActiveLanguage] = useState(false);
   const isRegistered = useSelector((state) => state.authSlice?.user);
   const [activeSearch, setActiveSearch] = useState(false);
+
   const { i18n, t } = useTranslation();
 
   const handleChangeLanguage = (lang) => {
@@ -26,37 +27,50 @@ export const Header = () => {
 
   const handleChangeSearch = () => {
     setActiveSearch(prev => !prev);
-  }
+  };
+
 
 
   return (
     <header className='header'>
       <div className="container header__parent">
+  
         <div className="header__wrapper">
           <Link to='/' className="header__wrapper-logo">{t('movies')}</Link>
         </div>
-
 
         <div className="header__wrapper header__wrapper--desktop">
           <Link to="/" className="header__wrapper-link">
             {t('home')}
           </Link>
+
+
+
+
           <span className="header__wrapper-search max">
             <IoLanguage />
           </span>
-          <span onClick={() => handleChangeSearch()} className="header__wrapper-search">
+
+          <span onClick={handleChangeSearch} className="header__wrapper-search">
             <IoMdSearch />
           </span>
         </div>
-          {activeSearch && (
-            <Search onClick={() => handleChangeSearch()}/>
-          )}
+
+        {activeSearch && (
+          <Search onClick={handleChangeSearch} />
+        )}
+
+ 
         <span onClick={() => setActive(!active)} className="header-menu">
           <IoMenu />
         </span>
 
         <div className={`header__wrapper header__wrapper--menu ${active ? 'show' : ''}`}>
           <a href="https://t.me/Lord090818" target="_blank" className="header__wrapper-telegram"><FaTelegram /></a>
+
+          <span className="header__wrapper-search">
+            <FaSave />
+          </span>
 
           <span
             className={`header__wrapper-message ${activeLanguage ? 'active' : ''}`}
@@ -65,12 +79,12 @@ export const Header = () => {
             {activeLanguage && (
               <nav className="language__content">
                 <ul>
-                  <li >
+                  <li>
                     <button onClick={() => handleChangeLanguage('en')} disabled={i18n.language === 'en'}>
                       English
                     </button>
                   </li>
-                   <li >
+                  <li>
                     <button onClick={() => handleChangeLanguage('ru')} disabled={i18n.language === 'ru'}>
                       Русский
                     </button>
@@ -81,7 +95,9 @@ export const Header = () => {
             <IoLanguage />
           </span>
 
-          <span className="header__wrapper-search max" onClick={() => handleChangeSearch()}><IoMdSearch /></span>
+          <span className="header__wrapper-search max" onClick={handleChangeSearch}>
+            <IoMdSearch />
+          </span>
 
           <Link
             to={isRegistered ? '/auth/profile' : '/auth/register'}

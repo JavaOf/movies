@@ -4,6 +4,7 @@ import categoriesReducer from './slices/categoriesSlice/categoriesSlice.js';
 import saveReducer from './slices/saveSlices/saveSlice.js';
 import authReducer from './auth/authSlice.js';
 import searchReducer from './slices/searchSlice/searchSlice.js';
+import detailReducer from './slices/detailSlice/detailSlice.js';
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         saveSlice: saveReducer,
         authSlice: authReducer,
         searchSlice: searchReducer,
+        detailSlice: detailReducer,
     },
 });
 

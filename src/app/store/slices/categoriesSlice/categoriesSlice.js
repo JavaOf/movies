@@ -24,83 +24,84 @@ const categoriesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // getCategoriesFilms
     builder
       .addCase(getCategoriesFilms.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(getCategoriesFilms.fulfilled, (state, { payload }) => {
+      .addCase(getCategoriesFilms.fulfilled, (state, action) => {
         state.loading = false;
-        state.filmsByYear[payload.year] = payload.results;
+        state.filmsByYear = {
+          ...state.filmsByYear,
+          [action.payload.year]: action.payload.movies,
+        };
       })
       .addCase(getCategoriesFilms.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-
+      // getCategoriesSeries
       .addCase(getCategoriesSeries.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(getCategoriesSeries.fulfilled, (state, { payload }) => {
+      .addCase(getCategoriesSeries.fulfilled, (state, action) => {
         state.loading = false;
-        state.seriesByYear[payload.year] = payload.results;
+        state.seriesByYear = {
+          ...state.seriesByYear,
+          [action.payload.year]: action.payload.series,
+        };
       })
       .addCase(getCategoriesSeries.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-
+      // getPopularMovies
       .addCase(getPopularMovies.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(getPopularMovies.fulfilled, (state, { payload }) => {
+      .addCase(getPopularMovies.fulfilled, (state, action) => {
         state.loading = false;
-        state.popularMovies = payload.results;
+        state.popularMovies = action.payload;
       })
       .addCase(getPopularMovies.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-
+      // getTopRatedSeries
       .addCase(getTopRatedSeries.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(getTopRatedSeries.fulfilled, (state, { payload }) => {
+      .addCase(getTopRatedSeries.fulfilled, (state, action) => {
         state.loading = false;
-        state.topRatedSeries = payload.results;
+        state.topRatedSeries = action.payload;
       })
       .addCase(getTopRatedSeries.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-
+      // getNowPlayingMovies
       .addCase(getNowPlayingMovies.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(getNowPlayingMovies.fulfilled, (state, { payload }) => {
+      .addCase(getNowPlayingMovies.fulfilled, (state, action) => {
         state.loading = false;
-        state.nowPlayingMovies = payload.results;
+        state.nowPlayingMovies = action.payload;
       })
       .addCase(getNowPlayingMovies.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-
+      // getTopActors
       .addCase(getTopActors.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(getTopActors.fulfilled, (state, { payload }) => {
+      .addCase(getTopActors.fulfilled, (state, action) => {
         state.loading = false;
-        state.topActors = payload.results;
+        state.topActors = action.payload;
       })
       .addCase(getTopActors.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       });
   },
 });

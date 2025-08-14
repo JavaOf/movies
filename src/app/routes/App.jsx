@@ -8,6 +8,7 @@ import { Login } from "../../assets/login/Login";
 import { ProfilePage } from "../../pages/profilePage/ProfilePage";
 import { Footer } from "../../components/footer/Footer";
 import { useEffect } from "react";
+import { SavePage } from "../../pages/savePage/SavePage";
 
 
 function App() {
@@ -16,10 +17,6 @@ function App() {
     {
       path: '/',
       element: <HomePage />
-    },
-    {
-      path: '/detail/:id',
-      element: <DetailPage />
     },
     {
       path: '/card/:id',
@@ -37,6 +34,14 @@ function App() {
       path: '/auth/profile',
       element: <ProfilePage />
     },
+    {
+      path: '/detail/:genreId',
+      element: <DetailPage />
+    },
+    {
+      path: '/save',
+      element: <SavePage />
+    }
   ];
 
   const ScrollTop = ({ children }) => {

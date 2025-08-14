@@ -2,8 +2,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { MdNavigateNext } from 'react-icons/md';
 import { DefaultCard } from '../../entities/defaultCard/DefaultCard';
 import { SkeletonCart } from '../../shared/assets/skeletonCart/SkeletonCart';
+import { Link } from 'react-router-dom';
 import './categoriesMovies.scss';
 import 'swiper/css';
+
+// Map category types to TMDB genre IDs
+const genreMap = {
+  movies_by_year: 28, // Action
+  tv_series_by_year: 10765, // Sci-Fi & Fantasy
+  popular_films: 12, // Adventure
+  top_tv_series: 35, // Comedy
+  now_at_the_cinema: 18, // Drama
+  best_actors: 99, // Documentary (or another relevant ID)
+};
 
 export const CategoriesMovies = ({
   years,
@@ -11,11 +22,14 @@ export const CategoriesMovies = ({
   handleYearGet,
   categoriesState,
   type = 'unknown',
-  loading
+  loading,
 }) => {
   const movies = selectedYear != null
     ? categoriesState[selectedYear]
     : categoriesState['all'] || categoriesState;
+
+  // Get the genre ID for the category type
+  const genreId = genreMap[type.toLowerCase()] || 28; // Fallback to Action if type not found
 
   return (
     <section className="categories-films container">
@@ -23,9 +37,12 @@ export const CategoriesMovies = ({
         <h2 className="categories-films__top-title">
           {type} {selectedYear ? `- ${selectedYear}` : ''}
         </h2>
-        <span className="categories-films__top-next">
+        <Link
+          to={`/detail/${genreId}`} // Use genreId instead of type
+          className="categories-films__top-next"
+        >
           <MdNavigateNext />
-        </span>
+        </Link>
       </div>
 
       {years?.length > 0 && (
@@ -39,7 +56,7 @@ export const CategoriesMovies = ({
               576: { slidesPerView: 4 },
               768: { slidesPerView: 5 },
               992: { slidesPerView: 6 },
-              1200: { slidesPerView: 8 }
+              1200: { slidesPerView: 8 },
             }}
             className="categories-films__header"
           >
@@ -47,8 +64,7 @@ export const CategoriesMovies = ({
               <SwiperSlide
                 key={i}
                 onClick={() => handleYearGet(year)}
-                className={`categories-films__header-btn ${selectedYear === year ? 'active' : ''
-                  }`}
+                className={`categories-films__header-btn ${selectedYear === year ? 'active' : ''}`}
               >
                 {year}
               </SwiperSlide>
@@ -67,7 +83,7 @@ export const CategoriesMovies = ({
             576: { slidesPerView: 4 },
             768: { slidesPerView: 5 },
             992: { slidesPerView: 6 },
-            1200: { slidesPerView: 8 }
+            1200: { slidesPerView: 8 },
           }}
         >
           {Array.isArray(movies) && movies.length > 0 ? (
