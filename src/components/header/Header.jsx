@@ -12,9 +12,9 @@ import './header.scss';
 export const Header = () => {
   const [active, setActive] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(false);
-  const isRegistered = useSelector((state) => state.authSlice?.user);
   const [activeSearch, setActiveSearch] = useState(false);
 
+  const isRegistered = useSelector((state) => state.authSlice?.user);
   const { i18n, t } = useTranslation();
 
   const handleChangeLanguage = (lang) => {
@@ -26,51 +26,54 @@ export const Header = () => {
   };
 
   const handleChangeSearch = () => {
-    setActiveSearch(prev => !prev);
+    if (isRegistered) { // блокировка поиска для незарегистрированных
+      setActiveSearch(prev => !prev);
+    }
   };
-
-
 
   return (
     <header className='header'>
       <div className="container header__parent">
-  
         <div className="header__wrapper">
           <Link to='/' className="header__wrapper-logo">{t('movies')}</Link>
         </div>
 
         <div className="header__wrapper header__wrapper--desktop">
-          <Link to="/" className="header__wrapper-link">
-            {t('home')}
-          </Link>
-
-
-
+          <Link to="/" className="header__wrapper-link">{t('home')}</Link>
 
           <span className="header__wrapper-search max">
             <IoLanguage />
           </span>
 
-          <span onClick={handleChangeSearch} className="header__wrapper-search">
+          <span 
+            onClick={handleChangeSearch} 
+            className={`header__wrapper-search ${!isRegistered ? 'disabled' : ''}`} // добавляем стиль disabled
+            title={!isRegistered ? 'Register to use search' : ''}
+          >
             <IoMdSearch />
           </span>
         </div>
 
-        {activeSearch && (
-          <Search onClick={handleChangeSearch} />
-        )}
+        {activeSearch && isRegistered && <Search onClick={handleChangeSearch} />}
 
- 
         <span onClick={() => setActive(!active)} className="header-menu">
           <IoMenu />
         </span>
 
         <div className={`header__wrapper header__wrapper--menu ${active ? 'show' : ''}`}>
-          <a href="https://t.me/Lord090818" target="_blank" className="header__wrapper-telegram"><FaTelegram /></a>
+          <a href="https://t.me/Lord090818" target="_blank" className="header__wrapper-telegram">
+            <FaTelegram />
+          </a>
 
-          <Link to={`/save`} className="header__wrapper-search">
-            <FaSave />
-          </Link>
+          {isRegistered ? (
+            <Link to="/save" className="header__wrapper-search">
+              <FaSave />
+            </Link>
+          ) : (
+            <span className="header__wrapper-search disabled" title="Register to save">
+              <FaSave />
+            </span>
+          )}
 
           <span
             className={`header__wrapper-message ${activeLanguage ? 'active' : ''}`}
@@ -95,7 +98,7 @@ export const Header = () => {
             <IoLanguage />
           </span>
 
-          <span className="header__wrapper-search max" onClick={handleChangeSearch}>
+          <span className={`header__wrapper-search max ${!isRegistered ? 'disabled' : ''}`} onClick={handleChangeSearch}>
             <IoMdSearch />
           </span>
 

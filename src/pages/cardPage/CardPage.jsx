@@ -14,9 +14,9 @@ export const CardPage = () => {
     const params = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {saveList} = useSelector(state => state.saveSlice);
+    const { saveList } = useSelector(state => state.saveSlice);
+    const isRegistered = useSelector(state => state.authSlice?.user); 
 
-    console.log(saveList)
     const getMovies = async () => {
         try {
             const response = await axiosApi.get(`movie/${params.id}`, {
@@ -33,6 +33,7 @@ export const CardPage = () => {
     }, []);
 
     const handleCopy = () => {
+        if (!isRegistered) return;
         const link = window.location.href;
         navigator.clipboard.writeText(link)
             .then(() => alert('Ссылка скопирована!'))
@@ -40,6 +41,7 @@ export const CardPage = () => {
     };
 
     const handleSave = () => {
+        if (!isRegistered) return; 
         dispatch(addToSave(detail));
         alert('Добавлено в избранное!');
     };
@@ -53,10 +55,18 @@ export const CardPage = () => {
                     </span>
                 </div>
                 <div className="card-page__header-wrapper">
-                    <span onClick={handleCopy} className='card-page__header-wrapper-btn'>
+                    <span
+                        onClick={handleCopy}
+                        className={`card-page__header-wrapper-btn ${!isRegistered ? 'disabled' : ''}`}
+                        title={!isRegistered ? 'Register to copy link' : ''}
+                    >
                         <MdContentCopy />
                     </span>
-                    <span onClick={handleSave} className='card-page__header-wrapper-btn'>
+                    <span
+                        onClick={handleSave}
+                        className={`card-page__header-wrapper-btn ${!isRegistered ? 'disabled' : ''}`}
+                        title={!isRegistered ? 'Register to save' : ''}
+                    >
                         <FiSave />
                     </span>
                 </div>

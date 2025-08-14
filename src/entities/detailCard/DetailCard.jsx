@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTrailer } from '../../app/store/slices/detailSlice/detailThunk';;
+import { getTrailer } from '../../app/store/slices/detailSlice/detailThunk';
 import Modal from 'react-modal';
 import { FaStar } from "react-icons/fa";
 import { t } from "i18next";
@@ -11,10 +11,12 @@ export const DetailCard = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const trailers = useSelector(state => state.detailSlice.trailers);
+  const isRegistered = useSelector(state => state.authSlice?.user); // проверка регистрации
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentTrailerUrl, setCurrentTrailerUrl] = useState('');
 
   const handleTrailerClick = async () => {
+    if (!isRegistered) return; // блокировка для незарегистрированных
     if (trailers[item.id]) {
       setCurrentTrailerUrl(`https://www.youtube.com/embed/${trailers[item.id].key}`);
       setIsModalOpen(true);
@@ -99,82 +101,79 @@ export const DetailCard = ({ item }) => {
       <div className="detail-card__row last">
         {item?.belongs_to_collection && (
           <div className="detail-card__row-wrapper-new">
-            <span className="detail-card__row-wrapper-new-label">Collection:</span>
+            <span className="detail-card__row-wrapper-new-label">{t('collection')}:</span>
             <span className="detail-card__row-wrapper-new-value">{item.belongs_to_collection.name}</span>
           </div>
         )}
 
         <div className="detail-card__row-wrapper-new">
-          <span className="detail-card__row-wrapper-new-label">Production:</span>
+          <span className="detail-card__row-wrapper-new-label">{t('production')}:</span>
           <span className="detail-card__row-wrapper-new-value">
             {item.production_companies?.map(c => c.name).join(', ')}
           </span>
         </div>
 
         <div className="detail-card__row-wrapper-new">
-          <span className="detail-card__row-wrapper-new-label">Countries:</span>
+          <span className="detail-card__row-wrapper-new-label">{t('countries')}:</span>
           <span className="detail-card__row-wrapper-new-value">
             {item.production_countries?.map(c => c.name).join(', ')}
           </span>
         </div>
 
         <div className="detail-card__row-wrapper-new">
-          <span className="detail-card__row-wrapper-new-label">Languages:</span>
+          <span className="detail-card__row-wrapper-new-label">{t('languages')}:</span>
           <span className="detail-card__row-wrapper-new-value">
             {item.spoken_languages?.map(l => l.name).join(', ')}
           </span>
         </div>
 
         <div className="detail-card__row-wrapper-new">
-          <span className="detail-card__row-wrapper-new-label">Budget:</span>
+          <span className="detail-card__row-wrapper-new-label">{t('budget')}:</span>
           <span className="detail-card__row-wrapper-new-value">${item?.budget?.toLocaleString()}</span>
         </div>
 
         <div className="detail-card__row-wrapper-new">
-          <span className="detail-card__row-wrapper-new-label">Revenue:</span>
+          <span className="detail-card__row-wrapper-new-label">{t('revenue')}:</span>
           <span className="detail-card__row-wrapper-new-value">${item?.revenue?.toLocaleString()}</span>
         </div>
 
         <div className="detail-card__row-wrapper-new">
-          <span className="detail-card__row-wrapper-new-label">Status:</span>
+          <span className="detail-card__row-wrapper-new-label">{t('status')}:</span>
           <span className="detail-card__row-wrapper-new-value">{item?.status}</span>
         </div>
 
         {item.tagline && (
           <div className="detail-card__row-wrapper-new">
-            <span className="detail-card__row-wrapper-new-label">Tagline:</span>
+            <span className="detail-card__row-wrapper-new-label">{t('tagline')}:</span>
             <span className="detail-card__row-wrapper-new-value">{item?.tagline}</span>
           </div>
         )}
 
         {item.homepage && (
-          <div className="detail-card__row-wrapper-new row">
+          <div className="detail-card__row-wrapper-new btns">
             <button
-              className="detail-card__row-wrapper-new-button"
-              onClick={() => window.open(item.homepage, "_blank")}
+              className={`detail-card__row-wrapper-new-button ${!isRegistered ? 'disabled' : ''}`}
+              onClick={() => isRegistered && window.open(item.homepage, "_blank")}
+              title={!isRegistered ? 'Register to use this action' : ''}
             >
-              Перейти на сайт
+              {t('go_to_site')}
             </button>
+
             <Link
-              className="detail-card__row-wrapper-new-button"
-              onClick={handleTrailerClick}
-              to={`/trailer/${item.id}`}
+              className={`detail-card__row-wrapper-new-button ${!isRegistered ? 'disabled' : ''}`}
+              onClick={(e) => {
+                if (!isRegistered) e.preventDefault();
+                else handleTrailerClick();
+              }}
+              to={isRegistered ? `/trailer/${item.id}` : '#'}
+              title={!isRegistered ? 'Register to use this action' : ''}
               style={{ textDecoration: 'none' }}
             >
-              Просмотр
-            </Link>
-             <Link
-              className="detail-card__row-wrapper-new-button"
-              onClick={handleTrailerClick}
-              to={`/trailer/${item.id}`}
-              style={{ textDecoration: 'none' }}
-            >
-              Просмотр
+              {t('watch')}
             </Link>
           </div>
         )}
       </div>
-
     </section>
   );
 };

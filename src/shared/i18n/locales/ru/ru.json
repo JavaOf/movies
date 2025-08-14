@@ -47,5 +47,19 @@
   "error_username_format": "Имя пользователя может содержать только буквы, цифры и нижнее подчёркивание",
   "error_invalid_email": "Некорректный email",
   "error_password_format": "Пароль должен содержать хотя бы одну заглавную букву и одну цифру",
-  "error_passwords_do_not_match": "Пароли не совпадают"
+  "error_passwords_do_not_match": "Пароли не совпадают",
+   "collection": "Коллекция",
+  "production": "Производство",
+  "countries": "Страны",
+  "languages": "Языки",
+  "budget": "Бюджет",
+  "revenue": "Доход",
+  "status": "Статус",
+  "tagline": "Слоган",
+  "go_to_site": "Перейти на сайт",
+  "watch": "Просмотр",
+    "no_saved_movies": "Нет сохранённых фильмов",
+  "favorites": "Избранное",
+  "delete": "Удалить",
+  "go_to": "Перейти"
 }

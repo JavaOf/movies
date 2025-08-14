@@ -47,5 +47,19 @@
   "error_username_format": "Username can only contain letters, numbers, and underscores",
   "error_invalid_email": "Invalid email address",
   "error_password_format": "Password must contain at least one uppercase letter and one number",
-  "error_passwords_do_not_match": "Passwords do not match"
+  "error_passwords_do_not_match": "Passwords do not match",
+   "collection": "Collection",
+  "production": "Production",
+  "countries": "Countries",
+  "languages": "Languages",
+  "budget": "Budget",
+  "revenue": "Revenue",
+  "status": "Status",
+  "tagline": "Tagline",
+  "go_to_site": "Go to site",
+  "watch": "Watch",
+   "no_saved_movies": "No saved movies",
+  "favorites": "Favorites",
+  "delete": "Delete",
+  "go_to": "Go to"
 }
