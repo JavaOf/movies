@@ -6,70 +6,59 @@
   gap: 25px;
   height: 600px;
   margin: 50px 0;
-  .row{
+
+  .row {
     gap: 10px;
   }
+
   &__row {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &:first-child {
-      width: 25%;
-    }
-    &:nth-child(2) {
-      width: 40%;
-    }
-    &:last-child {
-      width: 35%;
-    }
+
+    &:first-child { width: 25%; }
+    &:nth-child(2) { width: 40%; }
+    &:last-child { width: 35%; }
+
     &-poster {
-      position: relative;
       width: 100% !important;
       height: 100% !important;
       object-fit: cover !important;
       border-radius: 20px !important;
     }
+
     &-wrapper {
       display: flex;
       flex-direction: column;
       border-bottom: solid 2px $black;
       gap: 10px;
       padding-bottom: 10px;
+
       &-dots {
         flex: 1;
         border-bottom: 4px dotted $gold;
         height: 1px;
       }
-      &-date{
+
+      &-date {
         color: $white;
         border: solid 1px $gold;
         padding: 2px 5px;
         display: block;
-
       }
+
       &.row {
         flex-direction: row;
         justify-content: space-between;
         align-items: self-end;
       }
-      &-title {
-        color: $white;
-        font-size: 36px;
-      }
-      &-overview {
-        color: $white;
-        font-size: 18px;
-      }
-      &-tagline {
-        color: $white;
-      }
-      &-label {
-        color: $gold;
-        font-weight: 600;
-        display: block;
-        font-size: 26px;
-      }
+
+      &-title { color: $white; font-size: 36px; }
+      &-overview { color: $white; font-size: 18px; }
+      &-tagline { color: $white; }
+      &-label { color: $gold; font-weight: 600; font-size: 26px; display: block; }
+
       &-vote {
         background-color: $black;
         padding: 8px 8px;
@@ -81,13 +70,11 @@
         gap: 5px;
         font-size: 18px;
         border: solid 1px transparent;
-        &.top {
-          border: solid 1px $green;
-        }
-        &.low {
-          border: solid 1px $gold;
-        }
+
+        &.top { border: 1px solid $green; }
+        &.low { border: 1px solid $gold; }
       }
+
       &-language {
         font-size: 18px;
         background-color: $gold;
@@ -101,331 +88,134 @@
         gap: 5px;
       }
     }
+
+    &:last-child {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &-wrapper-new {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        &-label { color: $gold; font-weight: 600; font-size: 16px; }
+        &-value { color: $white; font-size: 16px; }
+
+        &-button {
+          padding: 8px 12px;
+          font-size: 16px;
+          border-radius: 6px;
+          font-weight: 600;
+          cursor: pointer;
+          border: none;
+          background-color: $gold;
+          color: $black;
+          transition: 0.2s;
+          width: fit-content;
+          margin-top: 5px;
+
+          &:hover { background-color: $green; color: $white; }
+        }
+      }
+    }
   }
 }
 
-
-
-
+/* Адаптивные стили */
 @media screen and (max-width: 1200px) {
   .detail-card {
-  padding: 50px 0;
-  display: flex;
-  gap: 25px;
-  height: 600px;
-  .row{
-    gap: 10px;
-  }
-  &__row {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    &:first-child {
-      width: 40%;
-    }
-    &:nth-child(2) {
-      width: 60%;
-    }
-    &:last-child {
-      // width: 35%;
-    }
-    &-poster {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 20px;
-    }
-    &-wrapper {
-      display: flex;
-      flex-direction: column;
-      border-bottom: solid 2px $black;
-      gap: 10px;
-      padding-bottom: 10px;
-      &-dots {
-        flex: 1;
-        border-bottom: 4px dotted $gold;
-        height: 1px;
-      }
-      &-date{
-        color: $white;
-        border: solid 1px $gold;
-        padding: 2px 5px;
-        display: block;
+    height: 600px;
 
-      }
-      &.row {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: self-end;
-      }
-      &-title {
-        color: $white;
-        font-size: 36px;
-      }
-      &-overview {
-        color: $white;
-        font-size: 18px;
-      }
-      &-tagline {
-        color: $white;
-      }
-      &-label {
-        color: $gold;
-        font-weight: 600;
-        display: block;
-        font-size: 26px;
-      }
-      &-vote {
-        background-color: $black;
-        padding: 8px 8px;
-        border-radius: 5px;
-        color: $white;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 18px;
-        border: solid 1px transparent;
-        &.top {
-          border: solid 1px $green;
-        }
-        &.low {
-          border: solid 1px $gold;
-        }
-      }
-      &-language {
-        font-size: 18px;
-        background-color: $gold;
-        padding: 8px 8px;
-        border-radius: 5px;
-        color: $black;
-        font-weight: 600;
-        border: solid 1px $black;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
+    &__row {
+      &:first-child { width: 40%; }
+      &:nth-child(2) { width: 60%; }
     }
   }
 }
-}
-
 
 @media screen and (max-width: 768px) {
   .detail-card {
-  padding: 50px 0;
-  display: flex;
-  gap: 25px;
-  height: auto;
-  flex-direction: column;
-  z-index: 1;
-  .row{
-    gap: 10px;
-  }
-  &__row {
-    height: 100%;
-    display: flex;
+    height: auto;
     flex-direction: column;
-    justify-content: space-between;
-    &:first-child {
-      width: 50%;
-      height: 350px;
-    }
-    &:nth-child(2) {
-      width: 100%;
-    }
-    &:last-child {
-      // width: 35%;
-    }
-    &-poster {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 20px;
-      display: block;
-    }
-    &-wrapper {
-      display: flex;
-      flex-direction: column;
-      border-bottom: solid 2px $black;
-      gap: 10px;
-      padding-bottom: 10px;
-      &-dots {
-        flex: 1;
-        border-bottom: 4px dotted $gold;
-        height: 1px;
-      }
-      &-date{
-        color: $white;
-        border: solid 1px $gold;
-        padding: 2px 5px;
-        display: block;
 
-      }
-      &.row {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: self-end;
-      }
-      &-title {
-        color: $white;
-        font-size: 36px;
-      }
-      &-overview {
-        color: $white;
-        font-size: 18px;
-      }
-      &-tagline {
-        color: $white;
-      }
-      &-label {
-        color: $gold;
-        font-weight: 600;
-        display: block;
-        font-size: 26px;
-      }
-      &-vote {
-        background-color: $black;
-        padding: 8px 8px;
-        border-radius: 5px;
-        color: $white;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 18px;
-        border: solid 1px transparent;
-        &.top {
-          border: solid 1px $green;
-        }
-        &.low {
-          border: solid 1px $gold;
-        }
-      }
-      &-language {
-        font-size: 18px;
-        background-color: $gold;
-        padding: 8px 8px;
-        border-radius: 5px;
-        color: $black;
-        font-weight: 600;
-        border: solid 1px $black;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
+    &__row {
+      &:first-child { width: 50%; height: 350px; }
+      &:nth-child(2) { width: 100%; }
     }
   }
 }
-}
-
-
 
 @media screen and (max-width: 460px) {
   .detail-card {
-  padding: 50px 0;
-  display: flex;
-  gap: 25px;
-  height: auto;
-  flex-direction: column;
-  z-index: 1;
-  .row{
-    gap: 10px;
-  }
-  &__row {
-    height: 100%;
-    display: flex;
+    height: auto;
     flex-direction: column;
-    justify-content: space-between;
-    &:first-child {
-      width: 60%;
-      height: 300px;
-    }
-    &:nth-child(2) {
-      width: 100%;
-    }
-    &:last-child {
-      // width: 35%;
-    }
-    &-poster {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 20px;
-      display: block;
-    }
-    &-wrapper {
-      display: flex;
-      flex-direction: column;
-      border-bottom: solid 2px $black;
-      gap: 10px;
-      padding-bottom: 10px;
-      &-dots {
-        flex: 1;
-        border-bottom: 4px dotted $gold;
-        height: 1px;
-      }
-      &-date{
-        color: $white;
-        border: solid 1px $gold;
-        padding: 2px 5px;
-        display: block;
 
-      }
-      &.row {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: self-end;
-      }
-      &-title {
-        color: $white;
-        font-size: 36px;
-      }
-      &-overview {
-        color: $white;
-        font-size: 18px;
-      }
-      &-tagline {
-        color: $white;
-      }
-      &-label {
-        color: $gold;
-        font-weight: 600;
-        display: block;
-        font-size: 26px;
-      }
-      &-vote {
-        background-color: $black;
-        padding: 8px 8px;
-        border-radius: 5px;
-        color: $white;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 18px;
-        border: solid 1px transparent;
-        &.top {
-          border: solid 1px $green;
-        }
-        &.low {
-          border: solid 1px $gold;
-        }
-      }
-      &-language {
-        font-size: 18px;
-        background-color: $gold;
-        padding: 8px 8px;
-        border-radius: 5px;
-        color: $black;
-        font-weight: 600;
-        border: solid 1px $black;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
+    &__row {
+      &:first-child { width: 60%; height: 300px; }
+      &:nth-child(2) { width: 100%; }
     }
   }
 }
+
+.detail-card__row-wrapper-new {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &-label {
+    color: $gold;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &-value {
+    color: $white;
+    font-size: 16px;
+  }
+
+  &-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background-color: $gold;
+    color: $black;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.2s;
+    width: fit-content;
+    margin-top: 5px;
+
+    &:hover {
+      background-color: $main;
+      color: $white;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .detail-card {
+    .last{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 100%;
+    }
+
+    &__row-wrapper-new {
+      width: calc(50% - 10px);
+      min-width: 150px;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    &__row-wrapper-new-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }

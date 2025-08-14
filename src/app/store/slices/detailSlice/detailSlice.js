@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDetail } from './detailThunk';
+import { getDetail, getTrailer } from './detailThunk';
 
 const initialState = {
   detailState: {}, // { [genreId]: { movies: [], totalPages: 1, currentPage: 1 } }
+  trailers: {}, // { [movieId]: trailer }
   loading: false,
   error: null,
 };
@@ -13,6 +14,7 @@ const detailSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // Detail
       .addCase(getDetail.pending, (state) => {
         state.loading = true;
       })
@@ -25,6 +27,20 @@ const detailSlice = createSlice({
         };
       })
       .addCase(getDetail.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // Trailer
+      .addCase(getTrailer.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getTrailer.fulfilled, (state, action) => {
+        state.loading = false;
+        if (action.payload.trailer) {
+          state.trailers[action.payload.movieId] = action.payload.trailer;
+        }
+      })
+      .addCase(getTrailer.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

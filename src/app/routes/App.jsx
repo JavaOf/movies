@@ -9,6 +9,7 @@ import { ProfilePage } from "../../pages/profilePage/ProfilePage";
 import { Footer } from "../../components/footer/Footer";
 import { useEffect } from "react";
 import { SavePage } from "../../pages/savePage/SavePage";
+import { TrailerPage } from "../../pages/trailerPage/TrailerPage";
 
 
 function App() {
@@ -41,6 +42,10 @@ function App() {
     {
       path: '/save',
       element: <SavePage />
+    },
+      {
+      path: '/trailer/:id',
+      element: <TrailerPage />
     }
   ];
 
