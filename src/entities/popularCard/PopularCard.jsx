@@ -39,13 +39,13 @@ export const PopularCard = ({
                         overview.length > 50 ? overview.slice(0, 170).trim() + '...' : overview
                     }</p>
                     <div className="popular-card__hover-options">
-                        <span className="popular-card__hover-options-copy"><MdContentCopy /></span>
-                        <span className="popular-card__hover-options-notification"><MdNotificationsActive /></span>
-                        <span 
+                        {/* <span className="popular-card__hover-options-copy"><MdContentCopy /></span>
+                        <span className="popular-card__hover-options-notification"><MdNotificationsActive /></span> */}
+                        {/* <span 
                         onClick={handleAddToSave}
                         className="popular-card__hover-options-save"
                         ><FiSave /></span>
-                        <button className="popular-card__hover-options-look">Смотреть</button>
+                        <button className="popular-card__hover-options-look">Смотреть</button> */}
                     </div>
                 </div>
             </div>
