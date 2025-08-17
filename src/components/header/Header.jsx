@@ -26,7 +26,7 @@ export const Header = () => {
   };
 
   const handleChangeSearch = () => {
-    if (isRegistered) { // блокировка поиска для незарегистрированных
+    if (isRegistered) { 
       setActiveSearch(prev => !prev);
     }
   };
@@ -47,7 +47,7 @@ export const Header = () => {
 
           <span 
             onClick={handleChangeSearch} 
-            className={`header__wrapper-search ${!isRegistered ? 'disabled' : ''}`} // добавляем стиль disabled
+            className={`header__wrapper-search ${!isRegistered ? 'disabled' : ''}`} 
             title={!isRegistered ? 'Register to use search' : ''}
           >
             <IoMdSearch />
@@ -61,7 +61,7 @@ export const Header = () => {
         </span>
 
         <div className={`header__wrapper header__wrapper--menu ${active ? 'show' : ''}`}>
-          <a href="https://t.me/Lord090818" target="_blank" className="header__wrapper-telegram">
+          <a href="https://t.me/Eievdkb" target="_blank" className="header__wrapper-telegram">
             <FaTelegram />
           </a>
 

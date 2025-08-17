@@ -5,6 +5,10 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import ru from './shared/i18n/locales/ru/ru.json';
 import en from './shared/i18n/locales/en/en.json';
 
+if (!localStorage.getItem('i18nextLng')) {
+  localStorage.setItem('i18nextLng', 'en');
+}
+
 i18
   .use(HttpBackend)
   .use(LanguageDetector)
@@ -19,13 +23,12 @@ i18
       ru: { translation: ru },
     },
     detection: {
-      order: ['localStorage', 'navigator'],
-      caches: ['localStorage'], 
+      order: ['localStorage'], 
+      caches: ['localStorage'],
     },
     interpolation: {
       escapeValue: false,
     },
   });
-
 
 export default i18;

@@ -13,15 +13,15 @@ export const Footer = () => {
                 </nav>
                 <nav className="footer__content__wrapper">
                     <span className="footer__content__wrapper-link">
-                        {t('my_mail')}: <a href="mailto:vistus707@gmail.com">vistus707@gmail.com</a>
+                        {t('my_mail')}: <a href="mailto:vmmuminov209@gmail.com">mmuminov209@gmail.com</a>
                     </span>
                     <span className="footer__content__wrapper-link">
-                        {t('my_telegram')}: <a href="https://t.me/Lord090818"
+                        {t('my_telegram')}: <a href="https://t.me/Eievdkb"
                             target="_blank"
-                            rel="noopener noreferrer">@Lord090818</a>
+                            rel="noopener noreferrer">@Eievdkb</a>
                     </span>
                     <span className="footer__content__wrapper-link">
-                        {t('my_phone')}: <a href="tel:+996990797374">+996 (990) 79-73-74</a>
+                        {t('my_phone')}: <a href="tel:+16302776229">+1 (630) 27-76-229</a>
                     </span>
                 </nav>
             </div>
